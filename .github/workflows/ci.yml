@@ -13,4 +13,4 @@ jobs:
       - name: Run Tests
         run: npm test
       - name: Check Cache Hit Status
-        run: echo "Cache hit: ${{ steps.setup-node-and-install.outputs.cache-hit }}"
+        run: echo "Cache hit - ${{ steps.setup-node-and-install.outputs.cache-hit }}"
