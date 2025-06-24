@@ -1,0 +1,15 @@
+name: 'Hello Docker Action'
+description: 'Greets someone and records the time in a Docker container'
+inputs:
+  who-to-greet:
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time:
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile' # References the Dockerfile in the same directory
+  args:
+    - ${{ inputs.who-to-greet }} # Passes the input as an argument to the entrypoint script

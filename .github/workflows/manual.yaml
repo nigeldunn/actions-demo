@@ -1,0 +1,30 @@
+name: Manual Deployment Workflow
+run-name: Deploy to ${{ inputs.environment }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - dev
+          - staging
+          - production
+      version:
+        description: 'Application version to deploy (e.g., 1.0.0)'
+        required: true
+        type: string
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Deploy to specified environment
+        run: |
+          echo "Initiating deployment for version ${{ inputs.version }} to ${{ inputs.environment }} environment."
+          # In a real-world scenario, this would involve actual deployment commands,
+          # e.g., using kubectl, Ansible, Terraform, or cloud provider CLIs.
+          echo "Deployment process for ${{ inputs.version }} on ${{ inputs.environment }} completed successfully."

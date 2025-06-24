@@ -1,0 +1,16 @@
+name: My Application CI Workflow
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node and Install Dependencies
+        id: setup-node-and-install # Assign an ID to the step using the composite action
+        uses:./.github/actions/setup-node-deps # Relative path to your composite action
+        with:
+          node-version: '20'
+      - name: Run Tests
+        run: npm test
+      - name: Check Cache Hit Status
+        run: echo "Cache hit: ${{ steps.setup-node-and-install.outputs.cache-hit }}"

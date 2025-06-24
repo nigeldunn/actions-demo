@@ -1,0 +1,14 @@
+name: Docker Action Demo Workflow
+on: [push] # Trigger on every push to the repository
+jobs:
+  greet-job:
+    runs-on: ubuntu-latest # Run on a GitHub-hosted Ubuntu runner
+    steps:
+      - uses: actions/checkout@v4 # Checkout the repository code
+      - name: Run Hello Docker Action
+        id: hello # Assign an ID to this step to reference its outputs
+        uses:./.github/actions/hello-docker # Relative path to your Docker action
+        with:
+          who-to-greet: 'GitHub Actions Enthusiast' # Pass input to the action
+      - name: Print the time from action output
+        run: echo "The time from the action was ${{ steps.hello.outputs.time }}"
