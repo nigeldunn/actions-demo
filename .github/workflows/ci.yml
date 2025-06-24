@@ -12,7 +12,5 @@ jobs:
           node-version: '20'
       - name: Run Tests
         run: npm test
-        shell: bash
       - name: Check Cache Hit Status
         run: echo "Cache hit: ${{ steps.setup-node-and-install.outputs.cache-hit }}"
-        shell: bash
