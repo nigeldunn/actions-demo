@@ -1,5 +1,9 @@
 name: My Application CI Workflow
-on: [push, pull_request]
+on:  # Trigger on every push to the repository
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
