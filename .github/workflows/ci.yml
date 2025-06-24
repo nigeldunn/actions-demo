@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node and Install Dependencies
         id: setup-node-and-install # Assign an ID to the step using the composite action
-        uses:./.github/actions/setup-node-deps # Relative path to your composite action
+        uses: nigeldunn/actions-demo/setup-node-deps@main
         with:
           node-version: '20'
       - name: Run Tests
